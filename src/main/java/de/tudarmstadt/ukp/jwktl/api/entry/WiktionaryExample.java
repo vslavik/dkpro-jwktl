@@ -15,29 +15,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.tudarmstadt.ukp.jwktl.parser.de;
+package de.tudarmstadt.ukp.jwktl.api.entry;
 
-import de.tudarmstadt.ukp.jwktl.api.IWiktionaryEntry;
-import de.tudarmstadt.ukp.jwktl.api.IWiktionaryPage;
-import de.tudarmstadt.ukp.jwktl.parser.de.components.DEEntryLinkHandler;
+import com.sleepycat.persist.model.Persistent;
+import de.tudarmstadt.ukp.jwktl.api.IWikiString;
+import de.tudarmstadt.ukp.jwktl.api.IWiktionaryExample;
 
-/**
- * Test case for {@link DEEntryLinkHandler}.
- */
-public class DEEntryLinkHandlerTest extends DEWiktionaryEntryParserTest {
+@Persistent
+public class WiktionaryExample implements IWiktionaryExample {
+	protected IWikiString example;
+	protected IWikiString translation;
 
-	/***/
-	public void testAbschlusz() throws Exception {
-		IWiktionaryPage page = parse("Abschlusz.txt");
-		IWiktionaryEntry entry = page.getEntry(0);
-		assertEquals("Abschluss", entry.getEntryLink());
+	public WiktionaryExample() {}
+
+	public WiktionaryExample(IWikiString example) {
+		this(example, null);
 	}
 
-	/***/
-	public void testEingaben() throws Exception {
-		IWiktionaryPage page = parse("Eingaben.txt");
-		IWiktionaryEntry entry = page.getEntry(0);
-		assertEquals("Eingabe", entry.getEntryLink());
+	public WiktionaryExample(IWikiString example, IWikiString translation) {
+		this.example = example;
+		this.translation = translation;
 	}
 
+	@Override
+	public String getText() {
+		return example.getText();
+	}
+
+	@Override
+	public IWikiString getExample() {
+		return example;
+	}
+
+	@Override
+	public IWikiString getTranslation() {
+		return translation;
+	}
 }

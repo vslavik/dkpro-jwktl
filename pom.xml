@@ -182,7 +182,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.10</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -209,16 +209,17 @@
                 </goals>
                 <configuration>
                   <excludes>
-                    <!-- maven config files -->
-                    <exclude>src/main/filter/**/*</exclude>
-                    <!-- release generated artifact -->
-                    <exclude>release.properties</exclude>
-                    <exclude>CHANGELOG.txt</exclude>
-                    <exclude>NOTICE.txt</exclude>
-                    <exclude>README.txt</exclude>
-                    <exclude>license/**/*</exclude>
-                    <exclude>src/main/resources/**/*</exclude>
-                    <exclude>src/test/resources/**/*</exclude>
+                      <!-- maven config files -->
+                      <exclude>src/main/filter/**/*</exclude>
+                      <!-- release generated artifact -->
+                      <exclude>release.properties</exclude>
+                      <exclude>CHANGELOG.txt</exclude>
+                      <exclude>NOTICE.txt</exclude>
+                      <exclude>README.md</exclude>
+                      <exclude>license/**/*</exclude>
+                      <exclude>src/main/resources/**/*</exclude>
+                      <exclude>src/test/resources/**/*</exclude>
+                      <exclude>.travis.yml</exclude>
                   </excludes>
                 </configuration>
               </execution>
@@ -228,4 +229,8 @@
       </build>
     </profile>
   </profiles>
+  <issueManagement>
+  	<url>https://github.com/dkpro/dkpro-jwktl/issues</url>
+  	<system>GitHub</system>
+  </issueManagement>
 </project>

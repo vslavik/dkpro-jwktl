@@ -15,29 +15,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package de.tudarmstadt.ukp.jwktl.parser.de;
+package de.tudarmstadt.ukp.jwktl.api;
 
-import de.tudarmstadt.ukp.jwktl.api.IWiktionaryEntry;
-import de.tudarmstadt.ukp.jwktl.api.IWiktionaryPage;
-import de.tudarmstadt.ukp.jwktl.parser.de.components.DEEntryLinkHandler;
+public interface IWiktionaryExample  {
+	/**
+	 * @return the text, including wiki markup
+	 */
+	String getText();
 
-/**
- * Test case for {@link DEEntryLinkHandler}.
- */
-public class DEEntryLinkHandlerTest extends DEWiktionaryEntryParserTest {
+	/**
+	 * @return the text of this example as wiki string
+	 */
+	IWikiString getExample();
 
-	/***/
-	public void testAbschlusz() throws Exception {
-		IWiktionaryPage page = parse("Abschlusz.txt");
-		IWiktionaryEntry entry = page.getEntry(0);
-		assertEquals("Abschluss", entry.getEntryLink());
-	}
-
-	/***/
-	public void testEingaben() throws Exception {
-		IWiktionaryPage page = parse("Eingaben.txt");
-		IWiktionaryEntry entry = page.getEntry(0);
-		assertEquals("Eingabe", entry.getEntryLink());
-	}
-
+	/**
+	 * @return the translation of this example, or null
+	 */
+	IWikiString getTranslation();
 }
